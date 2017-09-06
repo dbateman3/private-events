@@ -1,1 +1,8 @@
 <%= @user.name %>
+<% if @user.events.any? %>
+	<h3>Events (<%= @user.events.count %>)</h3>
+	<ol>
+		<%= render @events %>
+	</ol>
+	<%= will_paginate @events %>
+<% end %>

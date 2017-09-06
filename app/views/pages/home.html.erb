@@ -4,5 +4,10 @@
 	</head>
 	<body>
 		<h1>Private Events</h1>
+		<% if logged_in? %>
+			<%= render 'shared/event_form' %>
+		<% else %>
+			<h1>Welcome to Private Events</h1>
+		<% end %>
 	</body>
 </html>
