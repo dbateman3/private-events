@@ -1,6 +1,6 @@
-<%= @user.name %>
+<h1><%= current_user.name %></h1>
+<h2>Events:</h2><br>
 <% if @user.created_events.any? %>
-	<h3>Events (<%= @user.created_events.count %>)</h3>
 	<ol>
 		<%= render @events %>
 	</ol>
