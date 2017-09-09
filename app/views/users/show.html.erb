@@ -5,4 +5,6 @@
 		<%= render @events %>
 	</ol>
 	<%= will_paginate @events %>
+<% else %>
+<h4>No events</h4>
 <% end %>
