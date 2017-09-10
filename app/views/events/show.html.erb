@@ -1,2 +1,10 @@
 <h1>Creator: <%= @user %></h1><br>
-<%= @event.description %>
+<%= @event.description %><br>
+<% if @event.creator_id != current_user.id %>
+	<%= form_for(current_user.attendances.build(attended_event: @event_id)) do |f| %>
+	<%= f.hidden_field :attended_event, value: @event.id %>
+	<%= f.submit 'Attend Event' %>
+	<% end %>
+<% else %>
+	<h3>You are the creator of this event</h3>
+<% end %>
