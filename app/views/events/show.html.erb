@@ -1,7 +1,7 @@
 <h1>Creator: <%= @user %></h1><br>
 <%= @event.description %><br>
 <% if @event.creator_id != current_user.id %>
-	<%= form_for(current_user.attendances.build(attended_event: @event_id)) do |f| %>
+	<%= form_for(current_user.attendances.build) do |f| %>
 	<%= f.hidden_field :attended_event, value: @event.id %>
 	<%= f.submit 'Attend Event' %>
 	<% end %>
