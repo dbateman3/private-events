@@ -2,10 +2,24 @@
 <h2>Description: </h2>
 <h2><%= @event.description %></h2><br>
 <% if @event.creator_id != current_user.id %>
-	<%= form_for(current_user.attendances.build) do |f| %>
-	<%= hidden_field_tag :attended_event_id, @event.id %>
-	<%= f.submit 'Attend Event' %>
+	<% if @event.attendees != current_user.attended_events %>
+		<%= form_for(current_user.attendances.build) do |f| %>
+		<%= hidden_field_tag :attended_event_id, @event.id %>
+		<%= f.submit 'Attend Event' %>
+		<% end %>
+	<% else %>
+	<h3>You are attending this event</h3>
 	<% end %>
 <% else %>
 	<h3>You are the creator of this event</h3>
+
+<% end %>
+<h2>Attendees:</h2><br>
+<% if @event.attendees.any? %>
+	<ol>
+		<%= render @attendees %>
+	</ol>
+	<%= will_paginate @attendees %>
+<% else %>
+<h4>No events</h4>
 <% end %>
