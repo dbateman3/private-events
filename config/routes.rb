@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :events
 
-  resources :attendance, only: :create
+  resources :attendances
 
   
 
