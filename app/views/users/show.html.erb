@@ -1,10 +1,19 @@
 <h1><%= current_user.name %></h1>
-<h2>Events:</h2><br>
+<h2>Your events:</h2><br>
 <% if @user.created_events.any? %>
 	<ol>
 		<%= render @events %>
 	</ol>
 	<%= will_paginate @events %>
+<% else %>
+<h4>No events</h4>
+<% end %>
+<h2>Events attending:</h2>
+<% if @user.attended_events.any? %>
+	<ol>
+		<%= render @attended_events %>
+	</ol>
+	<%= will_paginate @attended_events %>
 <% else %>
 <h4>No events</h4>
 <% end %>
